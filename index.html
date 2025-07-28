@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anchors Lifestyle Health Centre</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlalDLrCNO3/1qE3g5z6Q72i+w+eJz/SgR0+V5k+N8t6y5t6g5/m+B5j/8t7gS5dG5w+v5N5t6Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <style>
+        /* Universal Styles & Variables */
+        :root {
+            --primary-color: #007bff; /* Blue */
+            --primary-dark: #0056b3;
+            --secondary-color: #6c757d; /* Gray */
+            --accent-color: #dc3545; /* Red for new elements */
+            --accent-dark: #c82333; /* Darker red */
+            --dark-color: #212529; /* Deep dark gray */
+            --light-color: #f8f9fa; /* Light gray */
+            --white-color: #ffffff;
+            --border-color: #dee2e6;
+            --text-color: #495057;
+            --heading-color: #343a40;
+            --shadow-light: 0 4px 10px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 8px 20px rgba(0, 0, 0, 0.1);
+            --transition-speed: 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            overflow-x: hidden; /* Prevent horizontal scroll from responsive elements */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 15px; /* Add internal padding */
+            overflow: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--heading-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.8rem; }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color var(--transition-speed), color var(--transition-speed), border-color var(--transition-speed);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background: var(--secondary-color);
+            color: var(--white-color);
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+            text-decoration: none;
+        }
+
+        .btn-outline-primary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--primary-color);
+            color: var(--white-color);
+            text-decoration: none;
+        }
+
+        .btn-light {
+            background: var(--white-color);
+            color: var(--primary-color);
+            border: 1px solid var(--border-color);
+        }
+        .btn-light:hover {
+            background: var(--light-color);
+        }
+
+        /* Added Red Button */
+        .btn-danger {
+            background-color: var(--accent-color); /* Red color */
+            color: var(--white-color);
+        }
+        .btn-danger:hover {
+            background-color: var(--accent-dark); /* Darker red */
+        }
+
+
+        /* Header */
+        header {
+            background: var(--white-color);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-light);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dark-color);
+            text-decoration: none;
+            display: flex; /* For potential icon alongside text */
+            align-items: center;
+        }
+
+        .logo a .logo-text {
+            display: inline-block;
+            transition: transform var(--transition-speed);
+        }
+
+        .logo a:hover .logo-text {
+            transform: scale(1.05); /* Subtle scale up on hover */
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: var(--dark-color);
+            font-weight: 600;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width var(--transition-speed);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            /* CORRECTED IMAGE PATH */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/automobile-automotive-car-116675.jpg') no-repeat center center/cover;
+            color: var(--white-color);
+            text-align: center;
+            padding: 120px 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            min-height: 600px; /* Ensure sufficient height */
+        }
+
+        .hero-section .container {
+            z-index: 2; /* Bring content above overlay */
+        }
+
+        .hero-section h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--white-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+        }
+
+        .hero-section p {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        /* Newsletter/Subscribe Form */
+        .newsletter-section {
+            background: var(--white-color);
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-medium);
+            margin-top: 50px;
+            max-width: 950px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+            color: var(--dark-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .newsletter-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--heading-color);
+            font-size: 2rem;
+        }
+        .newsletter-section p {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            justify-content: center;
+        }
+
+        .newsletter-form input[type="email"] {
+            flex: 1; /* Allows input to grow */
+            min-width: 280px; /* Ensures it doesn't get too small */
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+            color: var(--text-color);
+            transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .newsletter-form input[type="email"]:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            outline: none;
+        }
+
+        .newsletter-form button[type="submit"] {
+            padding: 12px 25px;
+            font-size: 1rem;
+        }
+
+        /* Our Community Section (Visitor Counter) */
+        .community-section {
+            background: var(--primary-color);
+            color: var(--white-color);
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px; /* Space from newsletter section */
+            border-radius: 10px;
+            box-shadow: var(--shadow-medium);
+            max-width: 950px;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden; /* For border-radius effect */
+        }
+
+        .community-section h2 {
+            color: var(--white-color);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .community-section p {
+            font-size: 1.5rem;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        /* Section common styling */
+        .featured-cars, .how-it-works, .testimonials, .animated-cars-section, .login-section, .faq-section, .about-us-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .featured-cars h2, .how-it-works h2, .testimonials h2, .animated-cars-section h2, .login-section h2, .faq-section h2, .about-us-section h2 {
+            font-size: 3rem;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .featured-cars h2::after, .how-it-works h2::after, .testimonials h2::after, .animated-cars-section h2::after, .login-section h2::after, .faq-section h2::after, .about-us-section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -15px;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* Car Grid Display */
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .car-card {
+            background: var(--white-color);
+            border-radius: 10px;
+            box-shadow: var(--shadow-light);
+            overflow: hidden;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        .car-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .car-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .car-card-content {
+            padding: 20px;
+        }
+
+        .car-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: var(--heading-color);
+        }
+
+        .car-card .price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .car-card ul {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .car-card ul li {
+            flex: 1 1 48%; /* Allows two items per row */
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .car-card ul li i {
+            margin-right: 10px;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .car-card .btn-secondary {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 80px 0;
+        }
+
+        .how-it-works h2 {
+            color: var(--white-color);
+        }
+        .how-it-works h2::after {
+            background-color: var(--white-color);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .step-card {
+            background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+            color: var(--white-color);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--shadow-light);
+            transition: background-color var(--transition-speed), transform var(--transition-speed);
+        }
+
+        .step-card:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+        }
+
+        .step-card i {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            color: var(--white-color);
+        }
+
+        .step-card h3 {
+            color: var(--white-color);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .step-card p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--white-color);
+            padding: 80px 0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--light-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-light);
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        .testimonial-card .quote {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+            font-size: 1.1rem;
+        }
+
+        .testimonial-card .author {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-top: 10px;
+            display: block;
+        }
+
+        .testimonial-card .rating {
+            color: gold; /* Or use an icon font for stars */
+            margin-bottom: 10px;
+        }
+
+        /* Animated Cars Section (Placeholder for complex animations) */
+        .animated-cars-section {
+            background-color: var(--dark-color);
+            color: var(--white-color);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden; /* Hide overflowing animations */
+        }
+
+        .animated-cars-section h2, .animated-cars-section p {
+            color: var(--white-color);
+            z-index: 2; /* Ensure text is above animated elements */
+            position: relative;
+        }
+
+        .animated-cars-section h2::after {
+            background-color: var(--accent-color);
+        }
+
+        .animated-cars-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1; /* Cars behind text */
+        }
+
+        /* Example of a simple car animation (you'd duplicate for multiple cars) */
+        .animated-car {
+            position: absolute;
+            bottom: -50px; /* Start off-screen */
+            width: 150px;
+            height: 80px;
+            /* Placeholder for a generic car image */
+            background: url('https://pngimg.com/uploads/car_PNG1650.png') no-repeat center center/contain;
+            animation: drive-left-to-right 20s linear infinite;
+            opacity: 0.6;
+        }
+
+        .animated-car:nth-child(1) {
+            left: -200px;
+            animation-delay: 0s;
+        }
+        .animated-car:nth-child(2) {
+            left: -400px;
+            animation-delay: 5s; /* Stagger animation */
+            transform: scaleX(-1); /* Make it drive right-to-left */
+            /* Placeholder for another generic car image */
+            background: url('https://pngimg.com/uploads/car_PNG1658.png') no-repeat center center/contain;
+        }
+        .animated-car:nth-child(3) {
+            left: -600px;
+            animation-delay: 10s;
+            opacity: 0.4;
+            width: 120px; /* Smaller car */
+            height: 60px;
+        }
+
+        @keyframes drive-left-to-right {
+            0% {
+                left: -20%;
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-5px) rotate(1deg); /* Slight bounce/tilt */
+            }
+            100% {
+                left: 120%;
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        /* Login Section */
+        .login-section {
+            background-color: var(--white-color);
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .login-form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 40px;
+            background: var(--light-color);
+            border-radius: 10px;
+            box-shadow: var(--shadow-medium);
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+
+        .login-form-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            color: var(--heading-color);
+        }
+        .login-form-container h2::after {
+            background-color: var(--accent-color); /* Red underlin */
+        }
+
+        .login-form-container .form-group {
+            margin-bottom: 20px;
+        }
+
+        .login-form-container input[type="email"],
+        .login-form-container input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+            color: var(--text-color);
+            transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .login-form-container input:focus {
+            border-color: var(--accent-color); /* Red focus border */
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25); /* Red shadow */
+            outline: none;
+        }
+
+        .login-form-container .btn-primary {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .login-form-container .forgot-password,
+        .login-form-container .create-account {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+        .login-form-container .forgot-password a,
+        .login-form-container .create-account a {
+            color: var(--accent-color); /* Red links */
+        }
+        .login-form-container .forgot-password a:hover,
+        .login-form-container .create-account a:hover {
+            color: var(--accent-dark);
+        }
+
+        /* FAQ Section (Questions/Suggestions) */
+        .faq-section {
+            background-color: var(--light-color);
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .faq-section h2::after {
+            background-color: var(--accent-color);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .faq-item {
+            background: var(--white-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--white-color);
+            color: var(--heading-color);
+            transition: background-color var(--transition-speed);
+        }
+        .faq-question:hover {
+            background-color: var(--light-color);
+        }
+
+        .faq-question i {
+            margin-left: 15px;
+            transition: transform var(--transition-speed);
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            font-size: 1rem;
+            color: var(--text-color);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            background-color: var(--light-color);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .faq-answer p {
+            padding-bottom: 20px; /* Padding for content inside hidden answer */
+        }
+
+        .faq-answer.show {
+            max-height: 200px; /* Adjust as needed for content height */
+            padding: 20px;
+        }
+
+        /* About Us Section */
+        .about-us-section {
+            background-color: var(--white-color);
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .about-us-section h2::after {
+            background-color: var(--accent-color);
+        }
+
+        .about-us-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .about-us-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+        
+        .about-us-content .mission-vision {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .about-us-content .mission-vision div {
+            flex: 1 1 350px;
+            background: var(--light-color);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-light);
+        }
+
+        .about-us-content .mission-vision h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .about-us-content .mission-vision p {
+            font-size: 1rem; /* Smaller text for mission/vision */
+            margin-bottom: 0; /* No bottom margin on last paragraph */
+        }
+
+        .about-us-content .director-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center horizontally */
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px dashed var(--border-color);
+        }
+
+        .about-us-content .director-info img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* Make it round */
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+            box-shadow: var(--shadow-medium);
+            margin-bottom: 20px;
+        }
+
+        .about-us-content .director-info h3 {
+            font-size: 1.8rem;
+            color: var(--heading-color);
+            margin-bottom: 10px;
+        }
+
+        .about-us-content .director-info p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 1rem;
+        }
+
+
+        .about-us-content .credits {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            line-height: 1.5;
+            opacity: 0.8;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 20px;
+        }
+        .about-us-content .credits span {
+            font-weight: 600;
+            color: var(--heading-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: var(--white-color);
+            padding: 50px 0 20px;
+            font-size: 0.95rem;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .footer-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white-color);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-col p, .footer-col ul li {
+            opacity: 0.8;
+        }
+
+        .footer-col ul {
+            padding: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: var(--white-color);
+            transition: color var(--transition-speed);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .footer-col .social-icons {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-col .social-icons a {
+            color: var(--white-color);
+            font-size: 1.8rem;
+            transition: color var(--transition-speed);
+        }
+
+        .footer-col .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-col p i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.85rem; /* Smaller for copyright */
+        }
+        .footer-bottom .watermark {
+            margin-top: 10px;
+            display: block;
+            color: rgba(255, 255, 255, 0.5); /* Lighter text for watermark */
+        }
+        .footer-bottom .watermark a {
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 600;
+        }
+        .footer-bottom .watermark a:hover {
+             color: var(--primary-color);
+        }
+
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.2rem; }
+            .hero-section h1 {
+                font-size: 3.5rem;
+            }
+            .hero-section p {
+                font-size: 1.3rem;
+            }
+            .newsletter-section .newsletter-form {
+                flex-direction: column;
+                align-items: center;
+            }
+            .newsletter-section .newsletter-form input,
+            .newsletter-section .newsletter-form button {
+                width: 80%; /* Adjust width for better fit */
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            nav ul li {
+                margin: 0;
+            }
+
+            .auth-buttons {
+                margin-top: 10px;
+                justify-content: center;
+            }
+
+            .hero-section {
+                padding: 80px 0;
+                min-height: 500px;
+            }
+            .hero-section h1 {
+                font-size: 2.8rem;
+            }
+            .hero-section p {
+                font-size: 1.1rem;
+            }
+
+            .newsletter-section, .community-section {
+                margin-top: 30px;
+                padding: 25px;
+            }
+            .newsletter-section h2, .community-section h2 {
+                font-size: 1.8rem;
+            }
+            .community-section p {
+                font-size: 1.2rem;
+            }
+
+
+            .featured-cars, .how-it-works, .testimonials, .animated-cars-section, .login-section, .faq-section, .about-us-section {
+                padding: 60px 0;
+            }
+            .featured-cars h2, .how-it-works h2, .testimonials h2, .animated-cars-section h2, .login-section h2, .faq-section h2, .about-us-section h2 {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
+
+            .car-grid, .steps-grid, .testimonial-grid, .footer-columns {
+                grid-template-columns: 1fr;
+            }
+
+            .car-card, .step-card, .testimonial-card, .login-form-container, .faq-item, .about-us-content .mission-vision div {
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 400px; /* Constrain width on small screens */
+            }
+
+            .animated-car {
+                width: 100px;
+                height: 50px;
+                bottom: -30px;
+            }
+            .about-us-content .mission-vision {
+                flex-direction: column;
+            }
+            .about-us-content .director-info {
+                max-width: 400px; /* Constrain width on small screens */
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            .hero-section p {
+                font-size: 0.95rem;
+            }
+            .logo a {
+                font-size: 1.5rem;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            .footer-col {
+                text-align: center;
+            }
+            .footer-col .social-icons {
+                justify-content: center;
+            }
+        </style>
+    </head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><span class="logo-text">Anchors Lifestyle Health Centre</span></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#newsletter">Newsletter</a></li>
+                    <li><a href="#featured-herbs">Our Herbs</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#about-us">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="#login" class="btn btn-outline-primary">Login</a>
+                <a href="#" class="btn btn-primary">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <h1>Anchors Lifestyle Health Centre</h1>
+                <p>We teach, we treat and God heals.</p>
+
+                <div class="newsletter-section" id="newsletter">
+                    <h2>Join Our Newsletter</h2>
+                    <p>Stay updated with our latest health tips, exclusive offers, and information on new herbs and spiritual insights. Herbs are a widely distributed and widespread group of plants, excluding vegetables, with savory or aromatic properties that are used for flavoring and garnishing food, for medicinal purposes or treatment.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button> 
+                    </form>
+                </div>
+
+                <div class="community-section">
+                    <h2>Our Community</h2>
+                    <p>Currently: <span id="visitor-count">1,234,567</span> visitors and counting!</p>
+                    <p style="font-size:0.9em; opacity:0.8;">(Note: This visitor count is animated for demonstration purposes.)</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-cars" id="featured-herbs">
+            <div class="container">
+                <h2>FEATURED HERBS</h2>
+                <div class="car-grid">
+                    <div class="car-card">
+                        <img src="https://via.placeholder.com/300x220?text=Generic+Herb" alt="Generic Herb"> <div class="car-card-content">
+                            <h3>Black Jack</h3>
+                            <p class="price">Indigenous</p>
+                            <ul>
+                                <li><i class="fas fa-head-side-mask"></i> Flu</li>
+                                <li><i class="fas fa-stomach"></i> Stomach ache</li>
+                                <li><i class="fas fa-sugar"></i> Diabetes</li>
+                                <li><i class="fas fa-hand-holding-medical"></i> Fast pain relief</li>
+                            </ul>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+
+                    <div class="car-card">
+                        <img src="images/moringa.jpg" alt="Moringa Herb">
+                        <div class="car-card-content">
+                            <h3>Moringa</h3>
+                            <p class="price">Superfood</p>
+                            <ul>
+                                <li><i class="fas fa-leaf"></i> Rich in Nutrients</li>
+                                <li><i class="fas fa-heart"></i> Boosts Immunity</li>
+                                <li><i class="fas fa-lungs"></i> Anti-inflammatory</li>
+                                <li><i class="fas fa-brain"></i> Improves Brain Health</li>
+                            </ul>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+
+                    <div class="car-card">
+                        <img src="images/aloe-vera.jpg" alt="Aloe Vera Herb">
+                        <div class="car-card-content">
+                            <h3>Aloe Vera</h3>
+                            <p class="price">Healing Plant</p>
+                            <ul>
+                                <li><i class="fas fa-hand-sparkles"></i> Skin Healing</li>
+                                <li><i class="fas fa-digestion"></i> Digestive Aid</li>
+                                <li><i class="fas fa-sun"></i> Sunburn Relief</li>
+                                <li><i class="fas fa-tooth"></i> Oral Health</li>
+                            </ul>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+
+                    <div class="car-card">
+                        <img src="images/garlic.jpg" alt="Garlic Herb">
+                        <div class="car-card-content">
+                            <h3>Garlic</h3>
+                            <p class="price">Natural Antibiotic</p>
+                            <ul>
+                                <li><i class="fas fa-bacteria"></i> Fights Infections</li>
+                                <li><i class="fas fa-heartbeat"></i> Lowers Blood Pressure</li>
+                                <li><i class="fas fa-shield-virus"></i> Immune Support</li>
+                                <li><i class="fas fa-cholesterol"></i> Reduces Cholesterol</li>
+                            </ul>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+
+                    <div class="car-card">
+                        <img src="images/ginger.jpg" alt="Ginger Herb">
+                        <div class="car-card-content">
+                            <h3>Ginger</h3>
+                            <p class="price">Spice & Medicine</p>
+                            <ul>
+                                <li><i class="fas fa-nausea"></i> Relieves Nausea</li>
+                                <li><i class="fas fa-pain"></i> Pain Reduction</li>
+                                <li><i class="fas fa-joint"></i> Reduces Muscle Soreness</li>
+                                <li><i class="fas fa-throat"></i> Soothes Sore Throat</li>
+                            </ul>
+                            <a href="#" class="btn btn-secondary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works" id="how-it-works">
+            <div class="container">
+                <h2>How Our Herbs Work</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <i class="fas fa-fire"></i>
+                        <h3>1. Boil the herb in water</h3>
+                        <p>Prepare the chosen herb by adding it to boiling water as per instructions.</p>
+                    </div>
+                    <div class="step-card">
+                        <i class="fas fa-hourglass-half"></i>
+                        <h3>2. Simmer for 30 minutes</h3>
+                        <p>Allow the herb to simmer gently for at least 30 minutes to extract its full benefits.</p>
+                    </div>
+                    <div class="step-card">
+                        <i class="fas fa-mug-hot"></i>
+                        <h3>3. Drink while still hot</h3>
+                        <p>Strain the liquid and consume the herbal infusion while it's still warm for best results.</p>
+                    </div>
+                    <div class="step-card">
+                        <i class="fas fa-star-half-alt"></i>
+                        <h3>4. Experience the healing effects</h3>
+                        <p>Consistent use as directed will allow you to experience the natural healing properties of the herbs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <h2>What Our Customers Say</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="quote">"This healed my 80-year-old grandma! Truly remarkable results from natural remedies."</p>
+                        <span class="author">- Tendai M., Client</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="quote">"I've felt a significant improvement in my energy levels and overall well-being since starting their program."</p>
+                        <span class="author">- John D., Client</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="quote">"The spiritual guidance combined with the natural remedies has brought so much peace into my life."</p>
+                        <span class="author">- Emily R., Client</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="animated-cars-section">
+            <div class="container">
+                <h2>Herbs in Harmony</h2>
+                <p>Discover the dynamic power of our natural remedies working together.</p>
+                <div class="animated-cars-container">
+                    <div class="animated-car"></div>
+                    <div class="animated-car"></div>
+                    <div class="animated-car"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="login-section" id="login">
+            <div class="container">
+                <h2>Login to Your Account</h2>
+                <div class="login-form-container">
+                    <form>
+                        <div class="form-group">
+                            <label for="login-email">Email Address</label>
+                            <input type="email" id="login-email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" class="btn btn-danger">Login</button>
+                        <div class="forgot-password">
+                            <a href="#">Forgot Password?</a>
+                        </div>
+                        <div class="create-account">
+                            Don't have an account? <a href="#">Sign Up</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section" id="faq">
+            <div class="container">
+                <h2>Questions & Suggestions (FAQ)</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How do I book an appointment? <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You can easily book an appointment by contacting us directly via phone or email, or by filling out our contact form. We will get back to you to confirm your booking.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            What services does Anchors Lifestyle Health Centre offer? <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We offer a range of services including herbal remedies, spiritual enlightenment, health consultations, and personalized wellness plans to support your holistic well-being.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Are your herbs natural and safe? <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, all our herbs are sourced naturally and prepared with the utmost care. We prioritize safety and efficacy, and our experts can guide you on proper usage.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Do you offer consultations? <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely! We provide personalized consultations to understand your health needs and recommend the most suitable herbal treatments and spiritual guidance for you.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            What if I have a suggestion for improvement? <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We value your feedback! Please feel free to use the contact information in our footer to send us your suggestions. We're always looking for ways to enhance your experience.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-us-section" id="about-us">
+            <div class="container">
+                <h2>About Anchors Lifestyle Health Centre</h2>
+                <div class="about-us-content">
+                    <p>Welcome to Anchors Lifestyle Health Centre, your sanctuary for holistic wellness in Zimbabwe. We are dedicated to providing profound spiritual enlightenment and effective natural herbal remedies to foster healing and well-being for all. Our approach integrates ancient wisdom with practical guidance, emphasizing the profound connection between spirit, mind, and body.</p>
+                    <p>Founded on principles of divine healing and compassionate care, Anchors Lifestyle Health Centre strives to empower individuals on their journey to optimal health. We believe in harnessing the power of nature and spiritual truths to bring about transformative healing, making every step towards wellness meaningful and supported.</p>
+                    
+                    <div class="mission-vision">
+                        <div>
+                            <h3>Our Mission</h3>
+                            <p>To teach, treat, and facilitate divine healing by providing unparalleled spiritual guidance and effective natural remedies, ensuring holistic well-being for every individual.</p>
+                        </div>
+                        <div>
+                            <h3>Our Vision</h3>
+                            <p>To be the leading center for holistic health in Zimbabwe, empowering communities through accessible, authentic, and high-quality natural health solutions and spiritual enlightenment.</p>
+                        </div>
+                    </div>
+
+                    <div class="director-info">
+                        <img src="images/me.jpg" alt="Director Hillary Eland">
+                        <h3>Meet The Director, Hillary Eland</h3>
+                        <p>Hillary Eland is the visionary behind Anchors Lifestyle Health Centre, passionately committed to guiding individuals towards holistic health through natural remedies and spiritual principles. With years of dedication and a deep understanding of wellness, Hillary founded this center to share a transformative path to healing and inner peace.</p>
+                    </div>
+
+                    <p>We are constantly innovating and expanding our services to meet the evolving needs of our esteemed clientele, ensuring that Anchors Lifestyle Health Centre remains your first choice for natural health and spiritual growth.</p>
+
+                    <div class="credits">
+                        <p>This website design was originally envisioned and created by <span>Hillary Eland</span> as a conceptual project from <span>Amazon Christian Academy</span>.</p>
+                        <p>In association with <span>Hillary Eland from GD Studios</span>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h4>Anchors Lifestyle Health Centre</h4>
+                    <p>Your journey to holistic health starts here. Natural remedies and spiritual enlightenment for a balanced life.</p>
+                    <div class="social-icons">
+                        <a href="https://facebook.com/hillaryeland" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com/mindsetvault67" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/mindsetvault12" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://linkedin.com/in/hillary-eland-child-genius" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#newsletter">Newsletter</a></li>
+                        <li><a href="#featured-herbs">Our Herbs</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#about-us">About Us</a></li>
+                        <li><a href="#login">Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Main Street, Harare, Zimbabwe</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+263776898163">+263 776 898 163</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:hillaryeland@gmail.com">hillaryeland@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Anchors Lifestyle Health Centre. All rights reserved.</p>
+                <p class="watermark">Created by <a href="#" target="_blank">Hillary Eland</a> as a conceptual project from <a href="#" target="_blank">Amazon Christian Academy</a>.</p>
+                <p class="watermark">In association with <a href="#" target="_blank">Hillary Eland from GD Studios</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling; // Get the next sibling, which is the answer
+                    const icon = question.querySelector('i');
+
+                    // Toggle the 'show' class on the answer
+                    answer.classList.toggle('show');
+                    // Toggle the 'active' class on the question for icon rotation
+                    question.classList.toggle('active');
+
+                    // Adjust max-height for smooth transition
+                    if (answer.classList.contains('show')) {
+                        // Set max-height to the scrollHeight to expand it fully
+                        answer.style.maxHeight = answer.scrollHeight + "px";
+                    } else {
+                        // Reset max-height to 0 to collapse it
+                        answer.style.maxHeight = "0";
+                    }
+
+                    // Close other open answers (optional, but good UX)
+                    faqQuestions.forEach(otherQuestion => {
+                        if (otherQuestion !== question && otherQuestion.classList.contains('active')) {
+                            otherQuestion.classList.remove('active');
+                            otherQuestion.nextElementSibling.classList.remove('show');
+                            otherQuestion.nextElementSibling.style.maxHeight = "0";
+                        }
+                    });
+                });
+            });
+
+            // Visitor Counter Animation
+            let visitorCount = 1234567; // Initial count
+            const visitorCountElement = document.getElementById('visitor-count');
+
+            function updateVisitorCount() {
+                visitorCount += 1; // Increment by 1
+                // Format with commas for readability
+                visitorCountElement.textContent = visitorCount.toLocaleString();
+            }
+
+            // Update every 10 seconds
+            setInterval(updateVisitorCount, 10000); // 10000 milliseconds = 10 seconds
+
+            // Initial update when page loads
+            updateVisitorCount(); 
+        });
+    </script>
+</body>
+</html>
